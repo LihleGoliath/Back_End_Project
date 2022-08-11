@@ -230,6 +230,19 @@ router.get("/users/verify", (req, res) => {
     }
   });
 });
+
+
+router.get("/", middleware, (req, res) => {
+  try {
+    let sql = "SELECT * FROM users";
+    con.query(sql, (err, result) => {
+      if (err) throw err;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // 
 // The Route where Decryption happens
 // router.post("/login", (req, res) => {
