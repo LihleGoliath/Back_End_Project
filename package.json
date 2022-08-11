@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/LihleGoliath/Back_End_project#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "config": "^3.3.7",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
