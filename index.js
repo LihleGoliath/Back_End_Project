@@ -23,7 +23,7 @@ const categoryRoute = require("./routes/categoryRoute");
 
 
 app.get("/", (req, res) => {
-    res.sendFile( __dirname + "/" + "index.html");
+   res.send("HeLlO WOrLd")
 });
 
 
