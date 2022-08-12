@@ -4,11 +4,7 @@ const bodyParser = require('body-parser');
 
 const app = express(); // Initialize express as an app variable
 // Set header
-app.use((req, res, next)=>{
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "*");
-    next();
-});
+
 app.set("port", process.env.PORT || 3000); // Set the port
 app.use(express.json()); // Enable the server to handle JSON requests
 app.use(cors()); // Don't let local development give errors
@@ -34,6 +30,7 @@ app.use(function(req, res, next) {
 
 
 app.get("/", (req, res) => {
+    response.set('Access-Control-Allow-Origin', '*');
    res.send(`
     <h1 st>Database Hosted</h1>
     <div style="background-color:green;text-align:center; width:100vw;font-size:2rem;">SUCCESSFUL</div>   
@@ -41,6 +38,11 @@ app.get("/", (req, res) => {
 });
 
 
+  app.use((req, res, next)=>{
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    next();
+});
 
 app.use("/users",userRoute);
 app.use("/products",productsRoute);
