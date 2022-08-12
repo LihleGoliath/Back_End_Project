@@ -232,11 +232,12 @@ router.get("/users/verify", (req, res) => {
 });
 
 
-router.get("/", middleware, (req, res) => {
+router.get("/",middleware, (req, res) => {
   try {
     let sql = "SELECT * FROM users";
     con.query(sql, (err, result) => {
       if (err) throw err;
+      res.send(result)
     });
   } catch (error) {
     console.log(error);
