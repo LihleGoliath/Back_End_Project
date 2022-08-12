@@ -23,7 +23,17 @@ const categoryRoute = require("./routes/categoryRoute");
 
 
 app.get("/", (req, res) => {
-   res.send("HeLlO WOrLd")
+   res.send(`
+    <h1 st>Database Hosted</h1>
+    <div style="background-color:green;text-align:center; width:100vw;font-size:2rem;">SUCCESSFUL</div>   
+   `)
+});
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
 });
 
 
