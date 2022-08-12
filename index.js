@@ -3,11 +3,10 @@ const cors = require("cors"); // Used to prevent errors when working locally
 const bodyParser = require('body-parser');
 
 const app = express(); // Initialize express as an app variable
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
+// Set header
+app.use((req, res, next)=>{
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
     next();
 });
 app.set("port", process.env.PORT || 3000); // Set the port
