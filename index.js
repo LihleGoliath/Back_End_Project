@@ -30,7 +30,8 @@ app.use(function(req, res, next) {
 
 
 app.get("/", (req, res) => {
-    response.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
    res.send(`
     <h1 st>Database Hosted</h1>
     <div style="background-color:green;text-align:center; width:100vw;font-size:2rem;">SUCCESSFUL</div>   
