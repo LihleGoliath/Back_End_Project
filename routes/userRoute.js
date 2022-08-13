@@ -16,7 +16,7 @@ router.post("/register", (req, res) => {
       full_name,
       email,
       password,
-      user_type,
+      user_type="user",
       phone,
       country,
 
