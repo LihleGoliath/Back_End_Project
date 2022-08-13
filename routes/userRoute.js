@@ -19,8 +19,7 @@ router.post("/register", (req, res) => {
       user_type,
       phone,
       country,
-      billing_address,
-      default_shipping_address
+
     } = req.body;
     console.log(req.body)
     // The start of hashing / encryption
@@ -35,8 +34,6 @@ router.post("/register", (req, res) => {
       user_type,
       phone,
       country,
-      billing_address,
-      default_shipping_address,
     };
    
     con.query(sql, user, (err, result) => {
@@ -78,8 +75,6 @@ router.post("/login", (req, res) => {
               user_type: result[0].user_type,
               phone: result[0].phone,
               country: result[0].country,
-              billing_address: result[0].billing_address,
-              default_shipping_address: result[0].default_shipping_address,
             },
           };
           // Creating a token and setting expiry date

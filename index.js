@@ -32,10 +32,7 @@ app.get("/", (req, res) => {
 
 
 
-// app.use("/",(req,res)=>{
-//     res.set('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-// });
+
 app.use("/users",userRoute);
 app.use("/products",productsRoute);
 app.use("/orders",ordersRoute);
