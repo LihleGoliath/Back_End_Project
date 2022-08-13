@@ -389,9 +389,5 @@ try {
 //     });
 
 
-module.exports = {
-  devServer: {
-      Proxy: '*'
-  }
-}
+
 module.exports = router;

@@ -100,11 +100,6 @@ router.delete("/:id",(req,res)=> {
     });
 
 
-    module.exports = {
-      devServer: {
-          Proxy: '*'
-      }
-    }
 module.exports = router;
 
 
