@@ -11,6 +11,7 @@ require("dotenv").config();
 // The Route where Encryption starts
 router.post("/register",  async (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   try {
     let sql = "INSERT INTO users SET ?";
     const {
