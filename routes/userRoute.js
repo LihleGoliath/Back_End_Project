@@ -15,10 +15,9 @@ router.post("/register",  async (req, res) => {
     const {
       full_name,
       email,
-  
       user_type,
       phone,
-      country,
+      country
     } = req.body;
     console.log(req.body)
     // The start of hashing / encryption
@@ -33,7 +32,7 @@ router.post("/register",  async (req, res) => {
       password:hash,
       user_type,
       phone,
-      country,
+      country
     };
    
     con.query(sql, user, (err, result) => {
