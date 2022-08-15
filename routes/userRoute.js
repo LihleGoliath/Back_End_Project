@@ -9,7 +9,7 @@ require("dotenv").config();
 
 // Register Route
 // The Route where Encryption starts
-router.post("/register", (req, res) => {
+router.post("/register",  async (req, res) => {
   try {
     let sql = "INSERT INTO users SET ?";
     const {
