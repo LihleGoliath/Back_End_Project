@@ -16,15 +16,14 @@ router.post("/register", (req, res) => {
       full_name,
       email,
       password,
-      user_type="user",
+      user_type,
       phone,
       country,
-
     } = req.body;
     console.log(req.body)
     // The start of hashing / encryption
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
+    const salt = await bcrypt.genSaltSync(10);
+    const hash = await bcrypt.hashSync(password, salt);
 
     let user = { 
       full_name,
@@ -194,8 +193,7 @@ router.put('reset-psw/:id', (req, res) => {
         user_type: result[0].user_type,
         phone: result[0].phone,
         country: result[0].country,
-        billing_address: result[0].billing_address,
-        default_shipping_address: result[0].default_shipping_address,
+
 
         // Only thing im changing in table
         password: hash,

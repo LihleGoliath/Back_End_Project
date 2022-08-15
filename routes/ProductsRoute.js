@@ -76,7 +76,7 @@ router.post("/",(req,res) => {
 // }
 // })
 
-router.put("/:id",middleware,(req,res) => {
+router.patch("/:id",middleware,(req,res) => {
     
 
     if(req.user.user_type === "admin" ){
