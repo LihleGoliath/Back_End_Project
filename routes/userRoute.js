@@ -15,7 +15,7 @@ router.post("/register",  async (req, res) => {
     const {
       full_name,
       email,
-      password,
+  
       user_type,
       phone,
       country,
@@ -23,6 +23,7 @@ router.post("/register",  async (req, res) => {
     console.log(req.body)
     // The start of hashing / encryption
     const salt = await bcrypt.genSaltSync(10);
+    const password = await req.body.password;
     const hash = await bcrypt.hashSync(password, salt);
 
     let user = { 
