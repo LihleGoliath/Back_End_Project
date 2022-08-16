@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const middleware = require("../middleware/auth");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
-const body = JSON.parse(event.body) // in case of lambda function
+
 
 // Register Route
 // The Route where Encryption starts
@@ -41,7 +41,7 @@ router.post("/register",  async (req, res) => {
     con.query(sql, user, (err, result) => {
       if (err) throw err;
       console.log(result);
-      await res.send(`User ${(user.full_name, user.email)} created successfully`);
+       res.send(`User ${(user.full_name, user.email)} created successfully`);
     });
   } catch (error) {
     console.log(error.message);
