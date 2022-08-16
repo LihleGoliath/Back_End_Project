@@ -25,16 +25,16 @@ router.post("/register",  async (req, res) => {
       password
     } =req.body
     const salt = await bcrypt.genSaltSync(10);
-    const hash = await bcrypt.hashSync(password.req.body, salt);
+    const hash = await bcrypt.hashSync(password, salt);
 
     let user =  await { 
-      full_name:full_name.req.body,
-      email:email.req.body,
+      full_name:full_name,
+      email:email,
       // We sending the hash value to be stored within the table
       password:hash,
-      user_type:user_type.req.body,
-      phone:phone.req.body,
-      country:country.req.body
+      user_type:user_type,
+      phone:phone,
+      country:country
     };   
     con.query(sql,user, (err, result) => {
       if (err) throw err;
