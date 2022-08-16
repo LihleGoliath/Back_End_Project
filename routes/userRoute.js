@@ -18,7 +18,7 @@ router.post("/register",  async (req, res) => {
     let sql = "INSERT INTO users SET ?";
  
     const salt = await bcrypt.genSaltSync(10);
-    const hash = await bcrypt.hashSync(password, salt);
+    const hash = await bcrypt.hashSync(req.body.password, salt);
 
     let user =  await { 
       full_name:req.body.full_name,
