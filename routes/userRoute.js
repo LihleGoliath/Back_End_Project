@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const middleware = require("../middleware/auth");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
+const body = JSON.parse(event.body) // in case of lambda function
 
 // Register Route
 // The Route where Encryption starts
@@ -20,14 +21,14 @@ router.post("/register",  async (req, res) => {
       user_type,
       phone,
       country
-    } = req.body;
+    } = await req.body;
     console.log(req.body)
     // The start of hashing / encryption
     const salt = await bcrypt.genSaltSync(10);
     const password = await req.body.password;
     const hash = await bcrypt.hashSync(password, salt);
 
-    let user = { 
+    let user =  await { 
       full_name,
       email,
       // We sending the hash value to be stored within the table
@@ -40,7 +41,7 @@ router.post("/register",  async (req, res) => {
     con.query(sql, user, (err, result) => {
       if (err) throw err;
       console.log(result);
-      res.send(`User ${(user.full_name, user.email)} created successfully`);
+      await res.send(`User ${(user.full_name, user.email)} created successfully`);
     });
   } catch (error) {
     console.log(error.message);
