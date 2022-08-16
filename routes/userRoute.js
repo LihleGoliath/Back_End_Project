@@ -24,7 +24,7 @@ router.post("/register",  async (req, res) => {
       full_name:req.body.full_name,
       email:req.body.email,
       // We sending the hash value to be stored within the table
-      password,
+      password:`${password}`,
       user_type:req.body.user_type,
       phone:req.body.phone,
       country:req.body.country
