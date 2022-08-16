@@ -11,34 +11,23 @@ require("dotenv").config();
 // Register Route
 // The Route where Encryption starts
 router.post("/register",  async (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
   try {
     let sql = "INSERT INTO users SET ?";
-    const {
-      full_name,
-      email,
-      user_type,
-      phone,
-      country
-    } = await req.body;
-    console.log(req.body)
-    // The start of hashing / encryption
     const salt = await bcrypt.genSaltSync(10);
     const password = await req.body.password;
     const hash = await bcrypt.hashSync(password, salt);
 
     let user =  await { 
-      full_name,
-      email,
+      full_name:full_name.req.body,
+      email:email.req.body,
       // We sending the hash value to be stored within the table
       password:hash,
-      user_type,
-      phone,
-      country
-    };
-   
-    con.query(sql, user, (err, result) => {
+      user_type:user_type.req.body,
+      phone:phone.req.body,
+      country:country.req.body
+    };   
+    con.query(sql,user, (err, result) => {
       if (err) throw err;
       console.log(result);
        res.send(`User ${(user.full_name, user.email)} created successfully`);
